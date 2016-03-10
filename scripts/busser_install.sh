@@ -1,9 +1,6 @@
 #!/bin/sh
 
-ruby="/opt/chef/embedded/bin/ruby"
-gem="/opt/chef/embedded/bin/gem"
 version="busser"
-gem_install_args="busser --no-rdoc --no-ri --no-format-executable -n /tmp/verifier/bin --no-user-install"
 busser="sudo -E /tmp/verifier/bin/busser"
 plugins="busser-serverspec"
 

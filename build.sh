@@ -1,4 +1,28 @@
 #!/bin/bash
+set -e
+# This dir
+SETUP_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $SETUP_DIR
 
-version="0.0.2"
-docker build --no-cache=True -t hellofresh/kitchen:$version -f Dockerfile .
+# Current Version
+version="0.0.4"
+
+# We use quay
+DOCKER_REG="quay.io"
+DOCKER_ORG="hellofresh"
+DOCKER_IMAGE="kitchen-base"
+
+DOCKER_STRING="${DOCKER_REG}/${DOCKER_ORG}/${DOCKER_IMAGE}:${version}"
+
+echo "******* BUILDING *******"
+docker build --no-cache=True -t ${DOCKER_STRING} -f Dockerfile .
+echo ""
+
+echo "******* TESTING *******"
+bundle exec rspec
+echo ""
+
+echo "******* PUSHING *******"
+docker push ${DOCKER_STRING}
+
+exit 0

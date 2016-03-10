@@ -30,9 +30,14 @@ describe "Dockerfile" do
     its(:stderr) { should contain('Python 2.7') }
   end
 
-  describe command('/opt/chef/embedded/bin/ruby --version') do
+  describe command('${ruby} --version') do
     its(:exit_status) { should eq 0 }
     its(:stdout) { should contain('ruby 2.1') }
+  end
+
+  describe command('${gem} --version') do
+    its(:exit_status) { should eq 0 }
+    its(:stdout) { should contain('2.') }
   end
 
 end
