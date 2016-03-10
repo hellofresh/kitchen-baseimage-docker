@@ -21,7 +21,7 @@ bundle exec rspec
 ```
 
 ## Example kitchen.yml
-```
+```yaml
 ---
 driver:
   name: docker
