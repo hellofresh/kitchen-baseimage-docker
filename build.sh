@@ -5,7 +5,7 @@ SETUP_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $SETUP_DIR
 
 # Current Version
-version="0.0.4"
+version="0.0.5"
 
 # We use quay
 DOCKER_REG="quay.io"

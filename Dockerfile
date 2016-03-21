@@ -1,11 +1,11 @@
-FROM phusion/baseimage:0.9.18
+FROM quay.io/hellofresh/hf-baseimage
 MAINTAINER Adham Helal <aa@hellofresh.com>
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install python openssh and curl for test-kitchen
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y software-properties-common python openssh-server \
+    apt-get install --no-install-recommends -y software-properties-common python openssh-server 
                                                
 # Install chef for busser and ruby :)
 RUN curl -s https://www.getchef.com/chef/install.sh > /tmp/install.sh && \
@@ -27,3 +27,6 @@ RUN  /bin/sh /tmp/busser_install.sh
 # Update to security package
 RUN apt-get update && apt-get -y -o Dpkg::Options::="--force-confdef" \
     dist-upgrade
+
+# Cleanup APT.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
