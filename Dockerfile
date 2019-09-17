@@ -1,4 +1,4 @@
-FROM quay.io/hellofresh/hf-baseimage
+FROM 489198589229.dkr.ecr.eu-west-1.amazonaws.com/hf-baseimage
 MAINTAINER Adham Helal <aa@hellofresh.com>
 
 ENV DEBIAN_FRONTEND=noninteractive
